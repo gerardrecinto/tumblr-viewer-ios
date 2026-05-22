@@ -1,5 +1,10 @@
 # Tumblr Photo Viewer
 
+![Swift](https://img.shields.io/badge/Swift-3%2B-F05138?logo=swift&logoColor=white)
+![iOS 9+](https://img.shields.io/badge/iOS-9%2B-000000?logo=apple&logoColor=white)
+![UIKit](https://img.shields.io/badge/UIKit-Auto%20Layout-blue)
+![Tumblr API](https://img.shields.io/badge/API-Tumblr%20v2-35465D)
+
 An iOS photo viewer built with Swift and UIKit that pulls image posts from the Tumblr API.
 
 ## Features
