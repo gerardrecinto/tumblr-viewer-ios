@@ -47,7 +47,9 @@ class PhotosViewController: ViewController, UITableViewDataSource, UITableViewDe
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell", for: indexPath) as? PhotoCell else {
+            return UITableViewCell()
+        }
         let post = posts[indexPath.row]
         if let photos = post["photos"] as? [[String: Any]],
            let originalSize = photos.first?["original_size"] as? [String: Any],
@@ -66,8 +68,8 @@ class PhotosViewController: ViewController, UITableViewDataSource, UITableViewDe
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let cell = sender as? PhotoCell,
-              let indexPath = tableView.indexPath(for: cell) else { return }
-        let vc = segue.destination as! PhotoDetailsViewController
+              let indexPath = tableView.indexPath(for: cell),
+              let vc = segue.destination as? PhotoDetailsViewController else { return }
         vc.image = cell.photoImageView.image
     }
 }
